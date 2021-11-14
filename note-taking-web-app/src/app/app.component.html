@@ -67,5 +67,5 @@
 <div class="content" role="main">
   <app-my-notes-list (noteSelected)="selectedNoteTitle = $event"></app-my-notes-list>
   <app-my-notes-details [selectedNoteTitle]="selectedNoteTitle"></app-my-notes-details>
+  <router-outlet></router-outlet>
 </div>
-<router-outlet></router-outlet>

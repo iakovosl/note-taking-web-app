@@ -1,54 +1,44 @@
+import { DatePipe } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+export class Quicknotes {
+  title!: String;
+  details!: String;
+  date!: any;
+}
+
 
 @Component({
   selector: 'app-my-notes-list',
   templateUrl: './my-notes-list.component.html',
-  styleUrls: ['./my-notes-list.component.css']
+  styleUrls: ['./my-notes-list.component.css'],
+  providers: [DatePipe]
 })
 export class MyNotesListComponent implements OnInit {
+  titleModel: String;
+  contentModel: String;
+  dateModel: Date;
+  quicknotes: Quicknotes[] = [];
+
   @Output() noteSelected = new EventEmitter();
+
 
   mockData: any = [
     {
       id: '1',
       CREATE_TS: "2021-11-15 17:17",
-      title: 'Make a coffee!!',
+      title: 'Make a coffee and coding..!!!!',
       done: false,
       details: 'Good Morning! Make a coffee to start your day!!',
       date: new Date()
     }, {
-
       id: '2',
-      CREATE_TS: "2021-11-15 17:27",
-      title: 'Home Gym',
-      done: false,
-      details: 'Home Gym',
-      date: new Date()
-    }, {
-
-      id: '3',
-      CREATE_TS: "2021-11-15 17:37",
-      title: 'Coding..!!',
-      done: false,
-      details: 'Lets start Coding..!!',
-      date: new Date()
-    }, {
-
-      id: '4',
-      CREATE_TS: "2021-11-15 17:47",
-      title: 'Go for a walk',
-      done: false,
-      details: 'Its time to go for a walk!',
-      date: new Date()
-    }, {
-      id: '5',
       CREATE_TS: "2021-11-15 17:57",
       title: 'Netflix!',
       done: false,
-      details: 'Netflix time! :)',
+      details: 'Its Netflix time! :)',
       date: new Date()
     }, {
-      id: '6',
+      id: '3',
       CREATE_TS: "2021-11-15 18:17",
       title: 'Coding again..!!',
       done: false,
@@ -110,9 +100,32 @@ export class MyNotesListComponent implements OnInit {
     this.id = id;
   }
 
-  constructor() { }
+
+  constructor() {
+    this.titleModel = '';
+    this.contentModel = '';
+    this.dateModel = new Date();
+
+
+  }
 
   ngOnInit(): void {
   }
+  createQuicknotes() {
+
+    const mockData: Quicknotes = {
+      title: this.titleModel,
+      details: this.contentModel,
+      date: this.dateModel
+
+    };
+
+    this.mockData.push(mockData);
+
+    // set the model values to '' again
+    this.titleModel = this.contentModel = '';
+    //this.dateModel= new Date();
+  }
+
 
 }
