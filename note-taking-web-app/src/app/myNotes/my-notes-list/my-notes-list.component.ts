@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-my-notes-list',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-notes-list.component.css']
 })
 export class MyNotesListComponent implements OnInit {
+  @Output() noteSelected = new EventEmitter();
 
   mockData: any = [
     {
@@ -13,7 +14,7 @@ export class MyNotesListComponent implements OnInit {
       CREATE_TS: "2021-11-15 17:17",
       title: 'Make a coffee!!',
       done: false,
-      details: 'detail1',
+      details: 'Good Morning! Make a coffee to start your day!!',
       date: new Date()
     }, {
 
@@ -21,7 +22,7 @@ export class MyNotesListComponent implements OnInit {
       CREATE_TS: "2021-11-15 17:27",
       title: 'Home Gym',
       done: false,
-      details: 'detail2',
+      details: 'Home Gym',
       date: new Date()
     }, {
 
@@ -29,7 +30,7 @@ export class MyNotesListComponent implements OnInit {
       CREATE_TS: "2021-11-15 17:37",
       title: 'Coding..!!',
       done: false,
-      details: 'detail3',
+      details: 'Lets start Coding..!!',
       date: new Date()
     }, {
 
@@ -37,21 +38,21 @@ export class MyNotesListComponent implements OnInit {
       CREATE_TS: "2021-11-15 17:47",
       title: 'Go for a walk',
       done: false,
-      details: 'detail4',
+      details: 'Its time to go for a walk!',
       date: new Date()
     }, {
       id: '5',
       CREATE_TS: "2021-11-15 17:57",
       title: 'Netflix!',
       done: false,
-      details: 'detail5',
+      details: 'Netflix time! :)',
       date: new Date()
     }, {
       id: '6',
       CREATE_TS: "2021-11-15 18:17",
       title: 'Coding again..!!',
       done: false,
-      details: 'detail6',
+      details: 'Coding again..!!',
       date: new Date()
     }
   ];

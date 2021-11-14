@@ -14,10 +14,10 @@
 
 
                 <div class="panel-body">
-                    <div *ngFor="let item of sortData" class="alert alert-info" style="width: 115%;">
+                    <div *ngFor="let item of sortData" (click)="noteSelected.emit(item.details)" class="alert alert-info" style="width: 145%;">
                         <span [ngClass]="{'done': item.done}">My note is:<span style="color:blue;font-weight:bold">
                                 {{item.title}}</span> and the creation date and time
-                            is : <span style="color:black;font-weight:bold"> {{item.date}}</span></span>
+                            is : <small>{{item.date}}</small></span>
                         <li (click)="remove(item.id)" style="float: right;" class="list-inline-item">
                             <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip"
                                 data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
@@ -42,10 +42,10 @@
                 <div class="sections">
                     <div class="edit-popup" *ngIf="show">
                         <input type="text" name="" class="edit-item" value="{{value}}" #item>
-                        <button class="btn-update" (click)="update(item.value)">Update</button>
+                        <button class="btn btn-success" (click)="update(item.value)">Update</button>
                     </div>
                     <input type="text" name="" class="item" #item>
-                    <button class="btn-add-item" (click)="create(item.value)">Add</button>
+                    <button class="btn btn-success" (click)="create(item.value)">Add</button>
                 </div>
             </div>
         </div>
