@@ -1,5 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { JokeValue, OpenApiResponse } from 'src/app/models/joke.model';
+import { OpenApiIntegrationService } from 'src/app/services/open-api-integration.service';
 export class Quicknotes {
   title!: String;
   details!: String;
@@ -99,24 +101,33 @@ export class MyNotesListComponent implements OnInit {
     this.id = id;
   }
 
+  jokesList: JokeValue[] = []
 
-  constructor() {
+
+  constructor(private service: OpenApiIntegrationService) {
     this.titleModel = '';
     this.contentModel = '';
     this.dateModel = new Date();
-
-
   }
 
   ngOnInit(): void {
   }
-  createQuicknotes() {
 
+  callApiButtonPress() {
+    // this.service.getOpenApiResult().subscribe(result =>{console.log(result)});
+    this.service.getOpenApiResult().subscribe(result => { this.getJokeList(result) });
+  }
+
+  getJokeList(res: OpenApiResponse) {
+    this.jokesList = res.value;
+    console.log(res);
+  }
+
+  createQuicknotes() {
     const mockData: Quicknotes = {
       title: this.titleModel,
       details: this.contentModel,
       date: this.dateModel
-
     };
 
     this.mockData.push(mockData);
@@ -125,6 +136,5 @@ export class MyNotesListComponent implements OnInit {
     this.titleModel = this.contentModel = '';
     //this.dateModel= new Date();
   }
-
 
 }
