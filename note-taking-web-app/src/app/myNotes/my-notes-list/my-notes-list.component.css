@@ -1,4 +1,37 @@
 .done {
     text-decoration: line-through;
   }
+
+  input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 4px solid #ccc;
+    border-radius: 7px;
+    box-sizing: border-box;
+  }
+  
+  
+  .example-container {
+    border-radius: 7px;
+    background-color:#D1ECF1;
+    margin: 30px;
+    padding: 20px;
+    width: 40%;
+  }
+#title{
+    border-radius: 7px;
+    background-color:#D1ECF1;
+    margin-top: -20px;
+    margin-bottom: 20px;
+  
+    color:#1976D2;
+    width: 35%;
+}
+
+#submit-btn{
+ position: relative;
+ bottom: 45px;
+}
   

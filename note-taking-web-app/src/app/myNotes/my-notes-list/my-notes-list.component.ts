@@ -6,7 +6,6 @@ export class Quicknotes {
   date!: any;
 }
 
-
 @Component({
   selector: 'app-my-notes-list',
   templateUrl: './my-notes-list.component.html',
